@@ -7,9 +7,9 @@ class TodoForm extends React.Component {
         this.state = {text:''}
     }
 
+    //todo
     render() {
         return (
-
             <form onSubmit={this.handleSubmit}>
                 <input type="text" value={this.state.text} onChange={this.handleChange}/>
                 <input type="submit" value="Add"/>
@@ -18,7 +18,6 @@ class TodoForm extends React.Component {
     }
 
     handleChange = event =>{
-        console.log(this.state.text)
         this.setState({
             text:event.target.value
         })

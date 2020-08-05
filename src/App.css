@@ -28,7 +28,7 @@
   color: #61dafb;
 }
 
-.todo_item {
+.todo-item {
   display: flex;
   justify-content: space-between;
   margin: 8px;

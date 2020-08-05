@@ -1,13 +1,9 @@
 import {connect} from "react-redux";
 import CompletedTodoList from "../../components/CompletedTodoList";
-import {getCompletedTodo} from "../../actions";
 
 const mapStateToProps = (state) => ({
-    completedTodo: state.completedTodo
+    completedTodo: state.todoList.filter(todo => todo.completed === true)
 });
-const mapDispatchToProps = (dispacth) => ({
-    getCompletedTodo: () => dispacth(getCompletedTodo())
-});
-const CompletedTodoLContainer = connect(mapStateToProps, mapDispatchToProps)(CompletedTodoList);
 
+const CompletedTodoLContainer = connect(mapStateToProps)(CompletedTodoList);
 export default CompletedTodoLContainer;

@@ -1,29 +1,30 @@
 let _id = 0;
 
-export  function addTodo(text) {
+export function addTodo(text) {
     return {
-        type:"ADD_TODO",
-        id:_id++,
+        type: "ADD_TODO",
+        id: _id++,
         text
     }
 }
 
-export  function updateTodo(id) {
+export function updateTodo(id) {
     return {
-        type:"UPDATE_TODO",
+        type: "UPDATE_TODO",
         id
     }
 }
 
-export  function deleteTodo(id) {
+export function deleteTodo(id) {
     return {
-        type:"DELETE_TODO",
+        type: "DELETE_TODO",
         id
     }
 }
 
-export  function getCompletedTodo() {
+export function getTodoResult(todoResult) {
     return {
-        type:"COMPLETED_TODO"
+        type: "GET_TODO",
+        todoResult: todoResult
     }
 }
