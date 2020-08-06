@@ -1,32 +1,39 @@
 import React from 'react';
+import {Input} from 'antd';
+import {postTodo} from "../../axios";
+
+const {Search} = Input;
 
 class TodoForm extends React.Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {text:''}
-    }
-
-    //todo
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
-                <input type="text" value={this.state.text} onChange={this.handleChange}/>
-                <input type="submit" value="Add"/>
-            </form>
+            <div>
+                <Search
+                    placeholder="Please input content"
+                    enterButton="Add"
+                    size="middle"
+                    onSearch={(value) => this.handleSubmit(value)}
+                />
+            </div>
+
         )
     }
 
-    handleChange = event =>{
-        this.setState({
-            text:event.target.value
-        })
+    handleSubmit = content => {
+        let todo = {
+            content: content,
+            status: false
+        }
+
+        postTodo(todo).then((response) => {
+            if (response.status === 201) {
+                this.props.addTodo(response.data)
+            }
+        });
+
     }
 
-    handleSubmit = event =>{
-        event.preventDefault();
-        this.props.addTodo(this.state.text)
-    }
 }
 
 export default TodoForm;

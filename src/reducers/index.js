@@ -1,7 +1,5 @@
-import { combineReducers } from "redux";
-import todoForm from './todoForm'
+import {combineReducers} from "redux";
 import todoList from './todoList'
 import completedTodo from "./completedTodo";
-import todoResult from "./todoResult";
 
-export default combineReducers({todoForm, todoList, completedTodo, todoResult})
+export default combineReducers({todoList, completedTodo})

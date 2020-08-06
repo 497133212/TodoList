@@ -1,10 +1,9 @@
-let _id = 0;
-
-export function addTodo(text) {
+export function addTodo(todo) {
     return {
         type: "ADD_TODO",
-        id: _id++,
-        text
+        id: todo.id,
+        content: todo.content,
+        status: todo.status
     }
 }
 
@@ -22,9 +21,10 @@ export function deleteTodo(id) {
     }
 }
 
-export function getTodoResult(todoResult) {
+export function getTodoList(todoList) {
     return {
-        type: "GET_TODO",
-        todoResult: todoResult
+        type: "GET_TODO_LIST",
+        todoList: todoList
     }
 }
+

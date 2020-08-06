@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import {addTodo} from "../../actions";
 
 const mapDispatchToProps = (dispacth) => ({
-    addTodo: (text) => dispacth(addTodo(text))
+    addTodo: (todo) => dispacth(addTodo(todo))
 });
 
 const TodoFormContainer = connect(null, mapDispatchToProps)(TodoForm);

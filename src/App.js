@@ -4,55 +4,52 @@ import TodoFormContainer from "./containers/TodoFormContainer";
 import {HashRouter as Router, Link, Route} from "react-router-dom";
 import CompletedTodoLContainer from "./containers/CompletedTodo";
 import TodoListContainer from "./containers/TodoListContainer";
-import {getTodo} from "./axios";
-import TodoResult from "./components/TodoResult";
-import TodoResultContainer from "./containers/TodoResultContainer";
+import {Layout, Menu} from 'antd';
+import {UserOutlined, VideoCameraOutlined,} from '@ant-design/icons';
+
+const {Header, Footer, Sider, Content} = Layout;
 
 function App() {
 
-    const todoList = {
-        "id": "46",
-        "content": "ttttttttttttttttttttttttt",
-        "status": false
-    }
-
-    // const deleteTest = () => {
-    //     return deleteTodo(todoList);
-    // }
-
     return (
-        <div className="App">
-            <header className="App-header">
-                <div>
-                    <Router>
-                        <ul>
-                            <li>
-                                <Link to="/completedTodoList">CompletedTodoList</Link>
-                            </li>
-                            <li>
-                                <Link to="/">TodoList</Link>
-                            </li>
-                            <li>
-                                <Link to="/todoResult">TodoResult</Link>
-                            </li>
-
-                        </ul>
-
+        <Router>
+            <Layout>
+                <Sider trigger={null} collapsible collapsed>
+                    <div className="logo"/>
+                    <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
+                        <Menu.Item key="1" icon={<UserOutlined/>}>
+                            <Link to="/">TodoList</Link>
+                        </Menu.Item>
+                        <Menu.Item key="2" icon={<VideoCameraOutlined/>}>
+                            <Link to="/completedTodoList">CompletedTodoList</Link>
+                        </Menu.Item>
+                    </Menu>
+                </Sider>
+                <Layout className="site-layout">
+                    <Header className="site-layout-background" style={{padding: 0}}>
+                        <h1>TodoList</h1>
+                    </Header>
+                    <Content
+                        className="site-layout-background"
+                        style={{
+                            margin: '24px 16px',
+                            padding: 24,
+                            minHeight: 280,
+                        }}
+                    >
                         <Route path="/completedTodoList" component={CompletedTodoLContainer}/>
-                        <Route path="/todoResult" component={TodoResultContainer}/>
                         <Route exact path={"/"} render={() => {
                             return (
                                 <div>
-
-                                    <TodoListContainer/>
                                     <TodoFormContainer/>
+                                    <TodoListContainer/>
                                 </div>
                             )
                         }}/>
-                    </Router>
-                </div>
-            </header>
-        </div>
+                    </Content>
+                </Layout>
+            </Layout>
+        </Router>
     );
 }
 

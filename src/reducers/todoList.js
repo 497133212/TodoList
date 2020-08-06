@@ -3,13 +3,15 @@ const todoList = (state = [], action) => {
         case 'ADD_TODO':
             return [...state, {
                 id: action.id,
-                text: action.text,
-                completed: false
+                content: action.content,
+                status: action.status
             }]
         case 'UPDATE_TODO':
-            return state.map(todo => todo.id === action.id ? {...todo, completed: !todo.completed} : todo);
-        case'DELETE_TODO':
+            return state.map(todo => todo.id === action.id ? {...todo, status: !todo.status} : todo);
+        case 'DELETE_TODO':
             return state.filter(todo => todo.id !== action.id);
+        case 'GET_TODO_LIST':
+            return action.todoList;
         default:
             return state;
     }
